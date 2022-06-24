@@ -34,7 +34,7 @@ const Search = (props) => {
     return (
         <SearchBox>
             <SearchBar onSubmit={props.bookRequest} action="">
-                <input className="inputSearchBar" onChange={props.handleSearch} placeholder="Введите запрос..." type="text"/>
+                <input className="inputSearchBar" onChange={props.handleSearch} placeholder="Введите запрос..." type="search"/>
                 <SearchButton className="buttonSearch" type="submit">Найти</SearchButton>
             </SearchBar>
         </SearchBox>
