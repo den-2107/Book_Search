@@ -36,6 +36,11 @@ const Search = (props) => {
             <SearchBar onSubmit={props.bookRequest} action="">
                 <input className="inputSearchBar" onChange={props.handleSearch} placeholder="Введите запрос..." type="search"/>
                 <SearchButton className="buttonSearch" type="submit">Найти</SearchButton>
+                <select className="selected" defaultValue="Sort" onChange={props.handleSort}>
+                    <option className="optionSelected" disabled value="Actual">Все</option>
+                    <option className="optionSelected" value="New">Новее</option>
+                    <option className="optionSelected" value="Old">Старее</option>
+                </select>
             </SearchBar>
         </SearchBox>
     );
