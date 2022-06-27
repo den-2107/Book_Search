@@ -13,26 +13,6 @@
     outline-offset: 0;
 }
 
-.selected {
-    cursor: pointer;
-    font-family: cursive;
-    font-weight: lighter;
-    border-radius: 16px;
-    border: none;
-    box-shadow: 0px 0px 41px -6px rgba(34, 60, 80, 0.17);
-    background-color: #D6F1DE;
-    margin: 8px;
-    font-size: 24px;
-}
-
-.selected:hover {
-    background-color: #C8EBD2;
-}
-
-.optionSelected {
-    cursor: pointer;
-    background-color: #C8EBD2;
-}
 
 .searchBox {
     display: flex;

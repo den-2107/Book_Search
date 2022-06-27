@@ -13,7 +13,9 @@ class Books extends Component {
             key: "AIzaSyBhG8KpY5Qt_hpaFtYmQvv20e3QCyu8GrY",
             maxResults: 10,
             filter: "full",
-            orderBy: "relevance"
+            orderBy: "relevance",
+            dowload: "dowload",
+            categories: "categories"
         };
     };
 

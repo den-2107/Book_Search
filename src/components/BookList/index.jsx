@@ -14,6 +14,8 @@ const BookList = (props) => {
                     author={book.volumeInfo.authors}
                     public={book.volumeInfo.publishedDate}
                     categories={book.volumeInfo.categories}
+                    dowloadPDF={book.accessInfo.pdf.downloadLink}
+                    dowloadEPUB={book.accessInfo.epub.downloadLink}
                     />
                 })
             }

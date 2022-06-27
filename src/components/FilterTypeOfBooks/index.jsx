@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Filter = (props) => {
+const FilterTypeOfBooks = (props) => {
     return (
         <select className="selected" defaultValue="full" onChange={props.handleFilter}>
             <option className="optionSelected" value="full">full</option>
@@ -12,4 +12,4 @@ const Filter = (props) => {
     );
 };
 
-export default Filter;
+export default FilterTypeOfBooks;

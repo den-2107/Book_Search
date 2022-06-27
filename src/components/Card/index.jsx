@@ -10,14 +10,20 @@ const Card = (props) => {
         <div style={{marginLeft: "4px"}}>
             <p
             style={{
-                marginTop: "8px",
+                marginTop: "4px",
                 fontSize: "16px",
                 fontWeight: "bold",
+                overflow: "scroll", 
+                height: "32px", 
+                width: "calc(100% - 32px)", 
+                wrap: "wrap",
+                overflowX: "hidden",
+                overflowY: "auto"
             }}
             >{"Автор: "}{props.author}</p>
             <p
             style={{
-                marginTop: "8px",
+                marginTop: "4px",
                 overflow: "scroll", 
                 height: "32px", 
                 width: "calc(100% - 32px)", 
@@ -28,14 +34,20 @@ const Card = (props) => {
             >{`"`}{props.title}{`"`}</p>
             <p
             style={{
-                marginTop: "8px",
+                marginTop: "4px",
             }}
             >{"Категория - "}{props.categories}</p>
             <p
             style={{
-                marginTop: "8px",
+                marginTop: "4px",
             }}
-            >{"Опубликована: "}{props.public === '0000' ? 'Нет даты' : props.public.substring(0, 4)}{' г.'}</p>
+            >{"Опубликована: "}{props.public === '0000' ? 'Нет даты' : props.public.substring(0, 4)}</p>
+            <p>
+                <a href={props.dowloadPDF} target= "_blanc">Читать PDF</a>
+            </p>
+            <p>
+                <a href={props.dowloadEPUB} target= "_blanc">Читать EPUB</a>
+            </p>
         </div>
        </div> 
     );
