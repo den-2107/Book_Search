@@ -7,7 +7,7 @@
 ![img_1](https://s1.hostingkartinok.com/uploads/images/2022/06/35da446b1542c69b2bf5ee30d23e5d72.png)
 
 ### Search results
-![img_2] (https://s1.hostingkartinok.com/uploads/images/2022/06/fac270c6d844493040363e82edc1bf1a.png)
+![img_2](https://s1.hostingkartinok.com/uploads/images/2022/06/fac270c6d844493040363e82edc1bf1a.png)
 
 
 ## Realized functional
