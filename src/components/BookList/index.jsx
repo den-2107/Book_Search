@@ -1,19 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import Card from '../Card';
-
-const Container = styled.div `
-margin: 30px !important;
-display: flex;
-flex-wrap: wrap;
-
-justify-content: center;   
-gap: 16px;
-`;
+import './index.css';
 
 const BookList = (props) => {
     return (
-        <Container>
+        <div className= 'container'>
             {
                 props.books.map((book, i) => {
                     return <Card 
@@ -24,10 +15,9 @@ const BookList = (props) => {
                     public={book.volumeInfo.publishedDate}
                     categories={book.volumeInfo.categories}
                     />
-                   
                 })
             }
-        </Container>
+        </div>
     );
 };
 

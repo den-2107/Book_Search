@@ -1,9 +1,8 @@
-/* eslint-disable array-callback-return */
-import React, { Component } from "react";
-import Search from "../Search";
-import request from "superagent";
-import BookList from "../BookList";
-
+import React, { Component } from 'react';
+import Search from '../Search';
+import request from 'superagent';
+import BookList from '../BookList';
+import Filters from '../Filters';
 
 class Books extends Component {
     constructor(props) {
@@ -12,16 +11,28 @@ class Books extends Component {
             books: [],
             searchField: '',
             key: "AIzaSyBhG8KpY5Qt_hpaFtYmQvv20e3QCyu8GrY",
-            sort: '',
+            maxResults: 10,
+            filter: "full",
+            orderBy: "relevance"
         };
     };
 
-    handleSearch = (e) => {
-            this.setState({ searchField: e.target.value })
-        }
+    request = () => {
+        if (this.state.searchField === '') return;
 
-    handleSort = (e) => {
-        this.setState({ sort: e.target.value })
+        request
+            .get(`https://www.googleapis.com/books/v1/volumes?`)
+            .query({
+                q: this.state.searchField, 
+                maxResults: this.state.maxResults,
+                filter: this.state.filter, 
+                orderBy: this.state.orderBy 
+            })
+            .then((data) => {
+                const editData = this.editData(data)
+                this.setState({ books: editData})
+                console.log(data)
+            })
     }
 
     editData = (data) => {
@@ -42,39 +53,23 @@ class Books extends Component {
 
     bookRequest = (e) => {
         e.preventDefault();
-        request
-            .get(`https://www.googleapis.com/books/v1/volumes?`)
-            .query({q: this.state.searchField, maxResults: 40 })
-            .then((data) => {
-                const editData = this.editData(data)
-                this.setState({ books: editData})
-                console.log(data)
-            })
-
+        this.request();
     }
 
-    
+    handleMaxResults = (e) => this.setState({ maxResults: e.target.value }, () => this.request());
+    handleOrderBy = (e) => this.setState({ orderBy: e.target.value }, () => this.request());
+    handleFilter = (e) => this.setState({ filter: e.target.value }, this.request());
+    handleSearch = (e) => this.setState({ searchField: e.target.value });
 
     render() {
-        const BooksSort = this.state.books.sort((a, b)=> {
-            if (this.state.sort === 'New') {
-                return parseInt(b.volumeInfo.publishedDate.substring(0,4)) - parseInt(a.volumeInfo.publishedDate.substring(0,4));
-            }
-            else if (this.state.sort === 'Old') {
-                return parseInt(a.volumeInfo.publishedDate.substring(0,4)) - parseInt(b.volumeInfo.publishedDate.substring(0,4));
-            }
-        })
-        
         return (
-        <>
-        <Search bookRequest = {this.bookRequest} handleSearch = {this.handleSearch} handle = {this.handleSort} />
-        <BookList books={BooksSort}/>
-        </>
-        
-    );
+            <>
+                <Search bookRequest = {this.bookRequest} handleSearch = {this.handleSearch} />
+                <Filters handleMaxResults={this.handleMaxResults} handleOrderBy={this.handleOrderBy} handleFilter={this.handleFilter}/>
+                <BookList books={this.state.books}/>
+            </>        
+        );
     };
 };
-
-
 
 export default Books;
